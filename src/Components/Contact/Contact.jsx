@@ -83,7 +83,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-10"
           >
-            <InfoItem icon={<FaEnvelope />} label="Email" value="aikotom3@email.com" />
+            <InfoItem icon={<FaEnvelope />} label="Email" value="aikotom3@gmail.com" />
             <InfoItem icon={<FaPhoneAlt />} label="Phone" value="+254738552698" />
             <InfoItem icon={<FaMapMarkerAlt />} label="Location" value="Nairobi, Kenya" />
           </motion.div>
