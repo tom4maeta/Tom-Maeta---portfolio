@@ -46,7 +46,7 @@ const Hero = () => {
               text-sm font-medium text-indigo-300 bg-white/10 backdrop-blur-md
               border border-white/20"
             >
-              Founder & Lead Engineer — Nexus Security Company - (StartUp)
+              Founder & Lead Engineer — Nexus Security Company - StartUp
             </span>
 
             <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold leading-tight text-white">
