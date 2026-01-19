@@ -68,7 +68,7 @@ const Hero = () => {
               for businesses that require reliability, performance, and protection.
               As the founder of
               <span className="font-semibold text-indigo-400">
-                {" "}Nexus Security Company
+                {" "}Nexus Security Company - (Startup)
               </span>, I focus on combining modern software engineering with
               cybersecurity best practices to deliver trusted solutions.
             </p>
