@@ -101,13 +101,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="relative flex h-2 w-2 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400"></span>
-              </span>
-              Founder & Lead Engineer — Nexus Security Company
-            </motion.span>
-
+          
             {/* Greeting */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 10 }}
@@ -116,7 +110,7 @@ const Hero = () => {
               className="mb-2"
             >
               <p className="text-lg text-gray-400 font-light tracking-wide">
-                Hey there, I'm
+                Hey there,Welcome!, I'm
               </p>
             </motion.div>
 
