@@ -231,6 +231,8 @@ const About = () => {
   );
 };
 
+
+
 /* ================= SKILLS SECTION COMPONENT ================= */
 const SkillsSection = ({ skillCounters }) => (
   <div className="w-full space-y-6">
