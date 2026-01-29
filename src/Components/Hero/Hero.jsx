@@ -8,19 +8,29 @@ const TypingParagraph = () => {
   const text = `I design and build secure, scalable, and resilient digital systems for businesses that require reliability, performance, and protection. As the founder of Nexus Security Company - (Startup), I focus on combining modern software engineering with cybersecurity best practices to deliver trusted solutions.`;
   
   const [displayedText, setDisplayedText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     let index = 0;
+    let direction = "forward";
+
     const interval = setInterval(() => {
-      if (index < text.length) {
-        setDisplayedText(text.substring(0, index + 1));
-        index++;
+      if (direction === "forward") {
+        if (index < text.length) {
+          setDisplayedText(text.substring(0, index + 1));
+          index++;
+        } else {
+          direction = "backward";
+        }
       } else {
-        clearInterval(interval);
-        setIsComplete(true);
+        if (index > 0) {
+          setDisplayedText(text.substring(0, index - 1));
+          index--;
+        } else {
+          direction = "forward";
+        }
       }
     }, 25);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -33,13 +43,11 @@ const TypingParagraph = () => {
     >
       <p className="text-lg sm:text-xl text-gray-200 max-w-2xl leading-relaxed font-light">
         {displayedText}
-        {!isComplete && (
-          <motion.span 
-            className="inline-block ml-1 w-1 h-6 sm:h-7 bg-gradient-to-r from-indigo-400 to-purple-500"
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.6, repeat: Infinity }}
-          />
-        )}
+        <motion.span 
+          className="inline-block ml-1 w-1 h-6 sm:h-7 bg-gradient-to-r from-indigo-400 to-purple-500"
+          animate={{ opacity: [1, 0] }}
+          transition={{ duration: 0.6, repeat: Infinity }}
+        />
       </p>
     </motion.div>
   );
@@ -56,6 +64,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen w-full overflow-hidden">
+      
       {/* Background */}
       <motion.img
         src={heroImage}
@@ -82,6 +91,7 @@ const Hero = () => {
             style={{ y: scrollY * 0.05 }}
             transition={{ duration: 0.8 }}
           >
+
             {/* Professional Identity */}
             <motion.span 
               className="inline-flex items-center px-4 py-2 mb-8 rounded-full
@@ -98,7 +108,7 @@ const Hero = () => {
               Founder & Lead Engineer — Nexus Security Company
             </motion.span>
 
-            {/* Animated Greeting */}
+            {/* Greeting */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -110,7 +120,7 @@ const Hero = () => {
               </p>
             </motion.div>
 
-            {/* Animated Name */}
+            {/* Name */}
             <motion.h1 
               className="mt-6 text-5xl sm:text-6xl xl:text-7xl font-black leading-tight bg-gradient-to-r from-white via-indigo-200 to-white bg-clip-text text-transparent"
               initial={{ opacity: 0, scale: 0.7, y: 30 }}
@@ -129,6 +139,7 @@ const Hero = () => {
               Full-Stack Engineer & Cybersecurity Specialist
             </motion.h2>
 
+            {/* Typing */}
             <TypingParagraph />
 
             {/* CTA */}
