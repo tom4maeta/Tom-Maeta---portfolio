@@ -2,7 +2,48 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import heroImage from "../../assets/Images/hero.png";
 import profileImage from "../../assets/Images/profile.png";
-import resume from "../../assets/Resume/TomMaeta.pdf";
+import resume from "../../assets/Resume/TomMaeta .pdf";
+
+const TypingParagraph = () => {
+  const text = `I design and build secure, scalable, and resilient digital systems for businesses that require reliability, performance, and protection. As the founder of Nexus Security Company - (Startup), I focus on combining modern software engineering with cybersecurity best practices to deliver trusted solutions.`;
+  
+  const [displayedText, setDisplayedText] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setDisplayedText(text.substring(0, index + 1));
+        index++;
+      } else {
+        clearInterval(interval);
+        setIsComplete(true);
+      }
+    }, 25);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 15 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+      className="mt-8"
+    >
+      <p className="text-lg sm:text-xl text-gray-200 max-w-2xl leading-relaxed font-light">
+        {displayedText}
+        {!isComplete && (
+          <motion.span 
+            className="inline-block ml-1 w-1 h-6 sm:h-7 bg-gradient-to-r from-indigo-400 to-purple-500"
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.6, repeat: Infinity }}
+          />
+        )}
+      </p>
+    </motion.div>
+  );
+};
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -42,61 +83,97 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Professional Identity */}
-            <span className="inline-flex items-center px-4 py-1.5 mb-6 rounded-full
-              text-sm font-medium text-indigo-300 bg-white/10 backdrop-blur-md
-              border border-white/20"
+            <motion.span 
+              className="inline-flex items-center px-4 py-2 mb-8 rounded-full
+              text-sm font-medium text-indigo-300 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 backdrop-blur-xl
+              border border-indigo-400/30 hover:border-indigo-400/60 transition-all"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              Founder & Lead Engineer — Nexus Security Company
-            </span>
-
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold leading-tight text-white">
-              Tom{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-                Maeta
+              <span className="relative flex h-2 w-2 mr-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-400"></span>
               </span>
-            </h1>
+              Founder & Lead Engineer — Nexus Security Company
+            </motion.span>
 
-            <h2 className="mt-3 text-xl sm:text-2xl font-semibold text-gray-200">
+            {/* Animated Greeting */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              className="mb-2"
+            >
+              <p className="text-lg text-gray-400 font-light tracking-wide">
+                Hey there, I'm
+              </p>
+            </motion.div>
+
+            {/* Animated Name */}
+            <motion.h1 
+              className="mt-6 text-5xl sm:text-6xl xl:text-7xl font-black leading-tight bg-gradient-to-r from-white via-indigo-200 to-white bg-clip-text text-transparent"
+              initial={{ opacity: 0, scale: 0.7, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              Tom Maeta
+            </motion.h1>
+
+            <motion.h2 
+              className="mt-4 text-xl sm:text-2xl font-medium text-gray-300 tracking-wide"
+              initial={{ opacity: 0, scale: 0.85, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            >
               Full-Stack Engineer & Cybersecurity Specialist
-            </h2>
+            </motion.h2>
 
-            <p className="mt-6 text-lg sm:text-xl text-gray-300 max-w-xl leading-relaxed">
-              I design and build
-              <span className="font-semibold text-white">
-                {" "}secure, scalable, and resilient digital systems
-              </span>{" "}
-              for businesses that require reliability, performance, and protection.
-              As the founder of
-              <span className="font-semibold text-indigo-400">
-                {" "}Nexus Security Company - (Startup)
-              </span>, I focus on combining modern software engineering with
-              cybersecurity best practices to deliver trusted solutions.
-            </p>
+            <TypingParagraph />
 
             {/* CTA */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <motion.div 
+              className="mt-12 flex flex-col sm:flex-row gap-6"
+              initial={{ opacity: 0, scale: 0.9, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
+            >
               <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 href="#work"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600
-                text-white font-semibold text-lg shadow-xl hover:shadow-2xl transition"
+                className="group px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600
+                text-white font-semibold text-lg shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300"
               >
-                View Portfolio
+                <span className="flex items-center justify-center gap-2">
+                  View Portfolio
+                  <motion.span 
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    →
+                  </motion.span>
+                </span>
               </motion.a>
 
               <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 href={resume}
                 download="TomMaeta_Resume.pdf"
-                className="px-8 py-4 rounded-xl bg-white/10 backdrop-blur-md
-                border border-white/30 text-white font-semibold text-lg
-                hover:bg-white/20 transition flex items-center justify-center"
+                className="px-8 py-4 rounded-xl bg-white/5 backdrop-blur-xl
+                border border-white/20 text-white font-semibold text-lg
+                hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 Download Resume
+                <motion.span 
+                  animate={{ opacity: [1, 0.6, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  ↓
+                </motion.span>
               </motion.a>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* IMAGE */}
