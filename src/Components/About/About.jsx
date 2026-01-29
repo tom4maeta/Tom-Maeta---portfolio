@@ -134,8 +134,8 @@ const About = () => {
         </motion.div>
 
         {/* CONTENT & IMAGE GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 
-          items-start w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-24 
+  items-start w-full">
 
           {/* LEFT - SKILLS, STATS, ACHIEVEMENTS */}
           <motion.div
