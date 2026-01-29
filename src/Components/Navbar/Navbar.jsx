@@ -72,9 +72,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <span className="absolute inset-0 rounded-full blur-md bg-indigo-500 opacity-0 group-hover:opacity-30 transition" />
             </div>
             <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              TOM
               <span className="ml-2 bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-                Maeta
+                TOM
               </span>
             </span>
           </a>
